@@ -1,0 +1,5 @@
+system:index,LC,LC_num,POINT_ID,asc_dpol_median,asc_vh_median,asc_vh_stDev,asc_vv_median,asc_vv_stDev,desc_dpol_median,desc_vh_median,desc_vh_stDev,desc_vv_median,desc_vv_stDev,source,votes,.geo
+00000000000000007ed0_0,Bare land,6,34504030,1523,-22600,4487,-14836,2896,1364,-21940,4388,-16080,3014,LUCAS_point,0.3719890377591616,
+0000000000000000b5de_0,Shrubland,4,34504018,1621,-18630,2738,-11493,1861,2002,-19144,2513,-9564,1995,LUCAS_polygon,NA,
+0000000000000000526e_0,Grassland,5,34484024,1649,-20031,2736,-12150,2660,1517,-21273,2854,-14026,2438,LUCAS_polygon,NA,
+000000000000000053ad_0,Grassland,5,33804038,1842,-19037,2815,-10335,1991,1626,-20273,2406,-12468,2263,LUCAS_polygon,NA,

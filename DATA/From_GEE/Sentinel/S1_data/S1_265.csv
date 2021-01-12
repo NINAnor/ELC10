@@ -1,0 +1,3 @@
+system:index,LC,LC_num,POINT_ID,asc_dpol_median,asc_vh_median,asc_vh_stDev,asc_vv_median,asc_vv_stDev,desc_dpol_median,desc_vh_median,desc_vh_stDev,desc_vv_median,desc_vv_stDev,source,votes,.geo
+00000000000000005858_0,Woodland,3,27762362,1624,-14235,1607,-8765,1779,1500,-14877,1705,-9918,1812,LUCAS_polygon,NA,
+00000000000000005306_0,Grassland,5,27742356,1446,-18669,2546,-12914,2221,1479,-16344,2533,-11050,2189,LUCAS_polygon,NA,
