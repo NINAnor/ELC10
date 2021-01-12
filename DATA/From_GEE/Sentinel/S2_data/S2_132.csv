@@ -1,0 +1,2 @@
+system:index,LC,LC_num,POINT_ID,R1_median,R2_median,R3_median,blue_median,green_median,nbr_stdDev,ndsi_p25,ndsi_p5,ndsi_p50,ndsi_p75,ndsi_p95,ndvi_fall,ndvi_p25,ndvi_p5,ndvi_p50,ndvi_p75,ndvi_p95,ndvi_spring,ndvi_summer,ndvi_texture_sd,ndvi_winter,nir_median,red_median,source,swir1_median,swir2_median,votes,.geo
+0000000000000000a273_0,Artificial land,1,46101686,2008500,2149000,2342000,1780000,1685000,88,-244,-296,-197,-142,134,51,24,-58,40,56,77,33,39,10,24,2120000,1904000,LUCAS_point,2590000,2025500,0.9088580454734333,

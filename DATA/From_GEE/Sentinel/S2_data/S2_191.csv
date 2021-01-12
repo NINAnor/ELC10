@@ -1,0 +1,2 @@
+system:index,LC,LC_num,POINT_ID,R1_median,R2_median,R3_median,blue_median,green_median,nbr_stdDev,ndsi_p25,ndsi_p5,ndsi_p50,ndsi_p75,ndsi_p95,ndvi_fall,ndvi_p25,ndvi_p5,ndvi_p50,ndvi_p75,ndvi_p95,ndvi_spring,ndvi_summer,ndvi_texture_sd,ndvi_winter,nir_median,red_median,source,swir1_median,swir2_median,votes,.geo
+00000000000000000b0b_0,Grassland,5,47324410,1377500,2826500,3284500,1171500,1062000,249,-396,-464,-348,703,936,17,20,-82,373,713,838,563,731,53,-6,3316000,914000,LUCAS_polygon,1965000,915000,NA,
