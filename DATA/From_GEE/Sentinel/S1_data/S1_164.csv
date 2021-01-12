@@ -1,0 +1,5 @@
+system:index,LC,LC_num,POINT_ID,asc_dpol_median,asc_vh_median,asc_vh_stDev,asc_vv_median,asc_vv_stDev,desc_dpol_median,desc_vh_median,desc_vh_stDev,desc_vv_median,desc_vv_stDev,source,votes,.geo
+0000000000000000016e_0,Cropland,2,48281674,1790,-17514,2003,-9786,1837,1698,-15973,2624,-9409,1899,LUCAS_polygon,NA,
+000000000000000021ac_0,Woodland,3,48361696,1395,-14813,1929,-10615,2142,1687,-12858,2167,-7624,2107,LUCAS_polygon,NA,
+0000000000000000cb6c_0,Woodland,3,48261690,1504,-13594,2264,-9037,1796,1504,-13944,2094,-9275,2122,LUCAS_polygon,NA,
+0000000000000000ccfd_0,Shrubland,4,48481686,1908,-12230,2547,-6411,2278,1486,-15467,1996,-10406,2092,LUCAS_polygon,NA,
