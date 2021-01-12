@@ -1,0 +1,3 @@
+system:index,LC,LC_num,POINT_ID,R1_median,R2_median,R3_median,blue_median,green_median,nbr_stdDev,ndsi_p25,ndsi_p5,ndsi_p50,ndsi_p75,ndsi_p95,ndvi_fall,ndvi_p25,ndvi_p5,ndvi_p50,ndvi_p75,ndvi_p95,ndvi_spring,ndvi_summer,ndvi_texture_sd,ndvi_winter,nir_median,red_median,source,swir1_median,swir2_median,votes,.geo
+0000000000000000b2b7_0,Cropland,2,30523332,1506500,2029500,2298500,1307000,1240500,259,-313,-398,-264,-149,-106,160,154,82,218,347,824,223,569,64,154,2190000,1262000,LUCAS_polygon,2215500,1376000,NA,
+0000000000000000ae94_0,Grassland,5,30463334,1232000,3159000,3865000,1030500,1019500,113,-404,-444,-331,-170,77,750,582,393,667,773,798,690,657,16,561,3874500,632000,LUCAS_polygon,2057500,934000,NA,

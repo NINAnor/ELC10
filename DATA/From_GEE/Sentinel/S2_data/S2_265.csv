@@ -1,0 +1,3 @@
+system:index,LC,LC_num,POINT_ID,R1_median,R2_median,R3_median,blue_median,green_median,nbr_stdDev,ndsi_p25,ndsi_p5,ndsi_p50,ndsi_p75,ndsi_p95,ndvi_fall,ndvi_p25,ndvi_p5,ndvi_p50,ndvi_p75,ndvi_p95,ndvi_spring,ndvi_summer,ndvi_texture_sd,ndvi_winter,nir_median,red_median,source,swir1_median,swir2_median,votes,.geo
+00000000000000005858_0,Woodland,3,27762362,565500,1362500,1773500,807000,580000,66,-238,-256,-148,3,223,588,534,477,632,676,733,633,700,13,520,1723500,372000,LUCAS_polygon,770500,316500,NA,
+00000000000000005306_0,Grassland,5,27742356,1339000,2531000,2856000,1107000,1042000,258,-478,-524,-376,-325,-224,680,288,229,459,634,758,280,300,63,614,2853000,903000,LUCAS_polygon,2303000,1247000,NA,
