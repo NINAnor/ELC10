@@ -2,6 +2,8 @@
 
 **The methodology in this repository is currently under review at an academic journal. The link to the paper will be posted in this README when available. Please refer to the manuscript for details on methods**
 
+The preprint article can be accessed here: https://arxiv.org/abs/2104.10922
+
 This is workflow to classify land cover over Europe at 10 m resolution produced with Sentinel optical and radar satellite imagery. The classification model is trained on land cover reference data form the LUCAS (Land Use/Cover Area frame Survey) dataset. The map represents conditions in 2018.
 
 The workflow spans two programming platforms, namely Google Earth Engine (GEE) JavaScript API and RStudio. The R code is merely to finalize and evaluate the classification model so that you know what you are getting when you make final inference in GEE. Careful attention needs to be paid to the movement of data between the two. The data to be uploaded to GEE are located int he ./DATA/For_GEE folder and the data to be used in the R script are found in ./DATA/From_GEE folder. 
