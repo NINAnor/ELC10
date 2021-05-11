@@ -473,7 +473,7 @@ function getSentStack(aoi, startDate, endDate){
 // Function to generate an S1 image stack for AOI 
 function getSARstack(aoi){
   
-  var s1 = ee.ImageCollection('COPERNICUS/S1_GRD')
+  var s1 = ee.ImageCollection('COPERNICUS/S1_GRD_FLOAT')
     .filterBounds(aoi)
     .filterDate(startDate, endDate)
     .filterMetadata('resolution_meters', 'equals' , 10)
