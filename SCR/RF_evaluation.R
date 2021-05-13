@@ -25,6 +25,7 @@ readMultiFiles <- function(directory){
 ref_points <- read_csv('./DATA/For_GEE/LUCAS_combined_reference_final.csv') %>%
   dplyr::select(-votes)
 
+
 # Sentinel 1 SAR data from GEE
 s1 <- readMultiFiles('./DATA/From_GEE/Sentinel/S1_data/') %>%
   dplyr::select(-'system:index', -'.geo', -LC, -LC_num, -votes, -source, -X1)
