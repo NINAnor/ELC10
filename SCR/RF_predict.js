@@ -82,32 +82,10 @@ var S2_NAMES = ['QA60','cb', 'blue', 'green', 'red', 'R1', 'R2', 'R3','nir','swi
 /*
   // Sentinel processing functions ///////////////////////////////////////////////////////////////////////////
 */
-
-// Mask extreme angels
-function maskAngle(img) {
-  var ang = img.select(['angle']);
-  var first = img.updateMask(ang.gt(30.63993));
-  return first.updateMask(ang.lt(44.73993)).select(0).copyProperties(img, ['system:time_start']);
-}
-// Clip edges of scenes
-function maskEdge(img) {
-  var mask = img.select(0).unitScale(-25, 5).multiply(255).toByte().connectedComponents(ee.Kernel.rectangle(1,1), 100);
-  return img.updateMask(mask.select(0)).copyProperties(img, ['system:time_start']);  
-}
-//Clip edges
-function clipEdge (img) {
-          return img.clip(img.geometry().buffer(-10000)).copyProperties(img, ['system:time_start']);
-  }
-// Convert to natural 
-function toNatural(img) {
-  img = ee.Image(img)
-  return ee.Image(10.0).pow(img.select(0).divide(10.0)).copyProperties(img, ['system:time_start']);
-}
 // Convert to DB
 function toDB(img) {
-  return ee.Image(img).log10().multiply(10.0).copyProperties(img, ['system:time_start']);
+  return ee.Image(ee.Image(img).log10().multiply(10.0).copyProperties(img));
 }
-
 // Sigma Lee filter 
 // The RL speckle filter from https://code.earthengine.google.com/2ef38463ebaf5ae133a478f173fd0ab5
 // by Guido Lemoine
@@ -208,17 +186,17 @@ function RefinedLee(img) {
 
 // Function to wrap all the above into one
 var cleanS1 = function(img){
-  img = maskAngle(img)
-  img = ee.Image(toNatural(img))
-  img = ee.Image(RefinedLee(img))
-  img = ee.Image(toDB(img))
-  return img
+  var imgOut = ee.Image(RefinedLee(img.select(0)))
+  return imgOut
 }
 
-// Function for radiometric slope correction
+
+// correction function for radiometric slope correction on a
 // Sentinel-1 image collection
 // https://github.com/ESA-PhiLab/radiometric-slope-correction/tree/master/javascript
-var slope_correction = function (collection, options){
+var slope_correction = function (collection,
+                                 options
+                                 ){
 
     // set defaults if undefined options
     options = options || {};
@@ -286,9 +264,6 @@ var slope_correction = function (collection, options){
             image.select('angle')).reduceRegion(ee.Reducer.mean(), geom, 1000).get('aspect')
             );
 
-        // Sigma0 to Power of input image
-        var sigma0Pow = ee.Image.constant(10).pow(image.divide(10.0));
-
         // Radar geometry
         var theta_iRad = image.select('angle').multiply(Math.PI/180).clip(geom);
         var phi_iRad = ee.Image.constant(heading).multiply(Math.PI/180);
@@ -311,7 +286,7 @@ var slope_correction = function (collection, options){
         var alpha_azRad = (alpha_sRad.tan().multiply(phi_rRad.sin())).atan();
 
         // Gamma_nought
-        var gamma0 = sigma0Pow .divide(theta_iRad.cos());
+        var gamma0 = image.divide(theta_iRad.cos());
 
                // models
         if (model == 'volume')
@@ -325,17 +300,13 @@ var slope_correction = function (collection, options){
 
         // apply model to derive gamma0_flat
         var gamma0_flat = gamma0.divide(corrModel);
-
-        // transform to dB-scale
-        var gamma0_flatDB = (ee.Image.constant(10)
-            .multiply(gamma0_flat.log10()).select(['VV', 'VH'])
-            );
-
+        gamma0_flat = gamma0_flat.where(gamma0_flat.lte(0), image)
+        
         // get Layover/Shadow mask
         var mask = _masking(alpha_rRad, theta_iRad, proj, buffer);
-
+        
         // return gamma_flat plus mask
-        return gamma0_flatDB.addBands(mask).addBands(image.select('angle')).copyProperties(image);
+        return gamma0_flat.copyProperties(image);
 
 
     }
@@ -344,7 +315,6 @@ var slope_correction = function (collection, options){
     return collection.map(_correct);
 
 };
-
 
 // Function to add spectral indices to Sentinel images
 var addIndices = function(image) {
@@ -461,7 +431,7 @@ function getSentStack(aoi, startDate, endDate){
     .addBands(ndviSpring)
     .addBands(ndviFall)
     .addBands(ndviFocal);
-    
+  
   // Multiply by 1000 and convert to integer to reduce file sizes on export
   s2Stack = s2Stack.multiply(1000).round().int();
   //print(s2Stack, 'sentinel stack');
@@ -471,7 +441,7 @@ function getSentStack(aoi, startDate, endDate){
 
 
 // Function to generate an S1 image stack for AOI 
-function getSARstack(aoi){
+function getSARstack(aoi,startDate, endDate){
   
   var s1 = ee.ImageCollection('COPERNICUS/S1_GRD_FLOAT')
     .filterBounds(aoi)
@@ -527,6 +497,8 @@ function getSARstack(aoi){
     .addBands(desc_vv.select(0).reduce(ee.Reducer.stdDev()).rename('desc_vv_stDev'))
     .addBands(desc_vh.select(0).reduce(ee.Reducer.stdDev()).rename('desc_vh_stDev'))
   
+  // Convert to BD
+  stack = toDB(stack) 
   // Multiply by 1000 and convert to integer to reduce file sizes on export
   stack = stack.multiply(1000).round().int()
   
@@ -607,7 +579,7 @@ for (var i = 0; i<2; i++){
   // Generate the predictor image stack for the grid cell AOI
   var masterStack = ee.Image(getAuxStack())
     .addBands(getSentStack(aoi, startDate, endDate))
-    .addBands(getSARstack(aoi))
+    .addBands(getSARstack(aoi,startDate, endDate))
     .select(selectVars);
   masterStack = masterStack.updateMask(mask);
   
