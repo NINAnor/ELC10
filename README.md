@@ -1,8 +1,6 @@
 # ELC10
 
-**The methodology in this repository is currently under review at an academic journal. The link to the paper will be posted in this README when available. Please refer to the manuscript for details on methods**
-
-The preprint article can be accessed here: https://arxiv.org/abs/2104.10922
+**Please refer to out published manuscript for details on methods: https://www.mdpi.com/2072-4292/13/12/2301/htm**
 
 This is workflow to classify land cover over Europe at 10 m resolution produced with Sentinel optical and radar satellite imagery. The classification model is trained on land cover reference data form the LUCAS (Land Use/Cover Area frame Survey) dataset. The map represents conditions in 2018.
 
